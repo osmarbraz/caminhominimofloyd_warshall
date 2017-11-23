@@ -111,12 +111,11 @@ public class Principal {
         for (int i = 0; i < G.length; i++) {
             for (int j = 0; j < G.length; j++) {
                 //Inicializa das distâncias
-                D[0][i][j] = G[i][j];
-                
+                D[0][i][j] = G[i][j];                
                 //Inicializa a matriz de predecessores
-                if ((i == j) || (D[0][i][j] > 999)) {
+                if ((i == j) || (D[0][i][j] == Integer.MAX_VALUE)) {
                     pi[0][i][j] = Integer.MAX_VALUE;
-                } else if ((i != j) && (D[0][i][j] < 999)) {
+                } else {
                     pi[0][i][j] = i + 1;
                 }                
             }
@@ -124,20 +123,18 @@ public class Principal {
 
         for (int k = 1; k < D.length; k++) {
             for (int i = 0; i < G.length; i++) {
-                for (int j = 0; j < G.length; j++) {
-                    //Calcula a distância
+                for (int j = 0; j < G.length; j++) {                    
                     D[k][i][j] = D[k - 1][i][j];
+                    pi[k][i][j] = pi[k - 1][i][j];                    
                     if ((D[k - 1][i][k - 1] != Integer.MAX_VALUE) && (D[k - 1][k - 1][j] != Integer.MAX_VALUE)) {
-                        D[k][i][j] = menor(D[k - 1][i][j], D[k - 1][i][k - 1] + D[k - 1][k - 1][j]);
-                    }
-                    
-                    //Calcula o predecessor
-                    pi[k][i][j] = pi[k - 1][i][j];
-                    if ((D[k - 1][i][k-1] != Integer.MAX_VALUE) && (D[k - 1][k-1][j] != Integer.MAX_VALUE)) {
+                        //Verifica se tem custo melhor
                         if (D[k - 1][i][j] > D[k - 1][i][k-1] + D[k - 1][k-1][j]) {
+                            //Armazena a distância
+                            D[k][i][j] = D[k - 1][i][k - 1] + D[k - 1][k - 1][j];
+                            //Armazena o predecessor
                             pi[k][i][j] = pi[k - 1][k-1][j];
-                        }
-                    }                    
+                        }                        
+                    }
                 }
             }
         }
@@ -152,19 +149,18 @@ public class Principal {
      */
     public static void mostrarCaminhoMinimo(int i, int j) {
         Stack<Integer> pilha = new Stack<Integer>();
-        System.out.println("\nMenor caminho de " + i + " para " + j);
-        int pai = 0;
+        System.out.println("\nMenor caminho de " + (i) + " para " + (j));
+        System.out.print((i)+"-");
         pilha.add(j);
         //Qtde de vértices
         int n = D[0].length;        
-        while (i != j) {
-            pai = pi[n][i][j];
-            pilha.add(pi[n][i][j]);
-            j = pai;
-        }        
+        while (i != pi[n][i-1][j-1]) {            
+            pilha.add(pi[n][i-1][j-1]);
+            j = pi[n][i-1][j-1];
+        } 
         for (int k = 0; k <= pilha.size() + 1; k++) {
             int x = pilha.peek();
-            System.out.print(x+"-");
+            System.out.print((x)+"-");
             pilha.pop();
         }
         System.out.println();
@@ -203,6 +199,6 @@ public class Principal {
         System.out.println("\nMatriz P:");
         imprimir(pi);
 
-        mostrarCaminhoMinimo(2-1,5-1);
+        mostrarCaminhoMinimo(2,5);
     }
 }
