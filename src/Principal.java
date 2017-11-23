@@ -193,10 +193,10 @@ public class Principal {
         //Executa o algoritmo        
         int[][] X = algoritmoFloydWarshall(G);
 
-        System.out.println("\nMatriz D:");
+        System.out.println("\nMatriz D (Matriz da menor distância entre cada par de vértices):");
         imprimir(D);
 
-        System.out.println("\nMatriz P:");
+        System.out.println("\nMatriz P (Matriz dos predecessores):");
         imprimir(pi);
 
         mostrarCaminhoMinimo(2,5);
