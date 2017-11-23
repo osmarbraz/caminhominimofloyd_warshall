@@ -1,6 +1,3 @@
-
-import java.util.Stack;
-
 /*
  * Universidade Federal de Santa Catarina - UFSC
  * Departamento de Informática e Estatística - INE
@@ -15,9 +12,13 @@ import java.util.Stack;
  * Caminho mínimos para grafo dirigido com Algoritmo de Floyd-Warshall
  *
  */
+
 /**
  * @author Osmar de Oliveira Braz Junior
  */
+
+import java.util.Stack;
+
 public class Principal {
 
     //Matriz dos pesos
@@ -50,7 +51,7 @@ public class Principal {
     }
 
     /**
-     * Imprime na saída padrão a matriz
+     * Imprime na saída padrão a matriz.
      *
      * @param X Uma matriz a ser exibida
      */
