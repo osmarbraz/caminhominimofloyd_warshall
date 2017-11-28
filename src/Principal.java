@@ -15,6 +15,7 @@
  * grafo orientado ponderado(G,w) (possivelmente com arestas de peso 
  * negativo) e um v vértice origem s de G. Mas sem ciclos de peso negativo.
  * A->B peso 2 e B->A peso -1
+ * Menor caminho entre as arestas, pesos negativos são permitidos.
  *
  */
 
