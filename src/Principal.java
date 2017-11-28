@@ -14,6 +14,7 @@
  * O algoritmo de Floyd-Warshall baseia-se em programação dinâmica recebe um 
  * grafo orientado ponderado(G,w) (possivelmente com arestas de peso 
  * negativo) e um v vértice origem s de G. Mas sem ciclos de peso negativo.
+ * A->B peso 2 e B->A peso -1
  *
  */
 
@@ -159,8 +160,7 @@ public class Principal {
 
     public static void main(String args[]) {
 
-        //Grafo da página 465 Thomas H. Cormen 3 ed
-        //int I = 999;
+        //Grafo da página 502 Thomas H. Cormen 3 ed        
         int I = Integer.MAX_VALUE;
         int G[][]
                 = //1  2  3  4  5
