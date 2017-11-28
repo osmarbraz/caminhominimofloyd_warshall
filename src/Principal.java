@@ -11,6 +11,10 @@
  *
  * Caminho mínimos para grafo dirigido com Algoritmo de Floyd-Warshall
  *
+ * O algoritmo de Floyd-Warshall baseia-se em programação dinâmica recebe um 
+ * grafo orientado ponderado(G,w) (possivelmente com arestas de peso 
+ * negativo) e um v vértice origem s de G. Mas sem ciclos de peso negativo.
+ *
  */
 
 /**
@@ -76,28 +80,13 @@ public class Principal {
             }
         }
     }
-
-    /**
-     * Retorna o menor valor entre dois valores inteiros.
-     *
-     * Em java pode ser utilizando Math.min(int a, int b)
-     *
-     * @param a primeiro valor inteiro.
-     * @param b segundo valor inteiro.
-     * @return o menor valor entre os a e b
-     */
-    public static int min(int a, int b) {
-        if (a < b) {
-            return a;
-        } else {
-            return b;
-        }
-    }
   
     /**
      * Executa o algoritmo de Floyd-Marshall para Caminhos Mínimos.
      *
      * Calcula os pesos dos caminhos mínimos.
+     * 
+     * Complexidade de tempo Theta(V^3)
      *
      * @param G Matriz de indicência da grafo
      * @return Matriz calculada
