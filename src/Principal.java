@@ -90,7 +90,7 @@ public class Principal {
      * 
      * Complexidade de tempo Theta(V^3)
      *
-     * @param G Matriz de indicência da grafo
+     * @param G Matriz de adjacência da grafo
      * @return Matriz calculada
      */
     public static int[][] algoritmoFloydWarshall(int[][] G) {
